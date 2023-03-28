@@ -30,7 +30,7 @@ int main()
 	//change IP address to group member's IP for testing
 
 	SvrAddr.sin_port = htons(27001);
-	SvrAddr.sin_addr.s_addr = inet_addr("192.168.1.28");	//me
+	SvrAddr.sin_addr.s_addr = inet_addr("10.192.228.150");	//me
 
 
 

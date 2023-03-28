@@ -9,7 +9,7 @@ using namespace std;
 struct StorageTypes
 {
 	//TODO add Sum variable to increase avg calc. efficiency
-
+	float sum;
 	unsigned int size = 0;
 	float* pData;
 };
@@ -17,8 +17,6 @@ struct StorageTypes
 //Function declarations
 void UpdateData(unsigned int, float, StorageTypes*);
 float CalcAvg(unsigned int, StorageTypes*);
-
-
 
 
 
@@ -152,14 +150,9 @@ int main()
 		return -1;
 
 
-	//REWORK?
-	// 
-	//----------------------------------
 	listen(ServerSocket, 1);
 
 
-	//wait for client connection
-	//and error checking
 	while (true) {
 
 		cout << "Waiting for client connection\n" << endl;
@@ -167,15 +160,10 @@ int main()
 		ConnectionSocket = SOCKET_ERROR;
 		ConnectionSocket = accept(ServerSocket, NULL, NULL);
 
-		//thread goes brrrrrrr
 		thread (NewThread, ConnectionSocket).detach();
 
 		cout << "Connection Established" << endl;
 	}
-
-	//----------------------------------
-
-	//bruh
 	
 	closesocket(ServerSocket);	    //closes server socket	
 	WSACleanup();					//frees Winsock resources
@@ -217,6 +205,8 @@ void UpdateData(unsigned int uiIndex, float value, StorageTypes* threadData)
 		//increment size of old array
 		threadData[uiIndex].size++;
 	}
+
+	threadData[uiIndex].sum += value;
 }
 
 float CalcAvg(unsigned int uiIndex, StorageTypes* threadData)
@@ -225,10 +215,10 @@ float CalcAvg(unsigned int uiIndex, StorageTypes* threadData)
 	float Avg = 0;
 
 	//get sum
-	for (unsigned int x = 0; x < threadData[uiIndex].size; x++)
-		Avg += threadData[uiIndex].pData[x];
+	//for (unsigned int x = 0; x < threadData[uiIndex].size; x++)
+		//Avg += threadData[uiIndex].pData[x];
 
 	//calculate average
-	Avg = Avg / threadData[uiIndex].size;
+	Avg = threadData[uiIndex].sum / threadData[uiIndex].size;
 	return Avg;
 }
