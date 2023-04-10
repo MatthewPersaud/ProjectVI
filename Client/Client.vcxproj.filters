@@ -23,5 +23,8 @@
     <Text Include="DataFile.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="..\..\..\..\Downloads\Telem_2023_1_24 16_12_58.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

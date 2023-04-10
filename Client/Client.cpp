@@ -30,7 +30,9 @@ int main()
 	//change IP address to group member's IP for testing
 
 	SvrAddr.sin_port = htons(27001);
-	SvrAddr.sin_addr.s_addr = inet_addr("10.192.228.150");	//me
+	//SvrAddr.sin_addr.s_addr = inet_addr("10.192.228.150");	//me
+	SvrAddr.sin_addr.s_addr = inet_addr("127.0.0.1");	//localhost
+
 
 
 
@@ -46,8 +48,8 @@ int main()
 		//and filename
 		string strInput;
 		//string fileName = "DataFile.txt";									//*
-		//string fileName = "Telem_2023_1_24 16_12_58.txt";					//*
-		string fileName = "Telem_czba-cykf_2023_1_24 16_24_34.txt";		//-
+		string fileName = "Telem_2023_1_24 16_12_58.txt";					//*
+		//string fileName = "Telem_czba-cykf_2023_1_24 16_24_34.txt";		//-
 		//string fileName = "Telem_onroute_2023_2_2 20_6_11.txt";				//-
 
 		//open file

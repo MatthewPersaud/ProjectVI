@@ -22,6 +22,7 @@
     <ClCompile Include="Client.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\..\..\..\Downloads\Telem_2023_1_24 16_12_58.txt" />
     <Text Include="DataFile.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

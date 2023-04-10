@@ -8,8 +8,8 @@ using namespace std;
 //Declare struct
 struct StorageTypes
 {
-	//TODO add Sum variable to increase avg calc. efficiency
-	float sum;
+	
+	float sum = 0;
 	unsigned int size = 0;
 	float* pData;
 };
@@ -173,6 +173,8 @@ int main()
 
 void UpdateData(unsigned int uiIndex, float value, StorageTypes* threadData)
 {
+
+	
 	//On first function call
 	if (threadData[uiIndex].size == 0)
 	{
@@ -180,7 +182,7 @@ void UpdateData(unsigned int uiIndex, float value, StorageTypes* threadData)
 		threadData[uiIndex].pData = new float[1];
 		threadData[uiIndex].pData[0] = value;
 		//set size to 1
-		threadData[uiIndex].size = 1;
+		threadData[uiIndex].size++;
 	}
 	else
 	{
@@ -207,18 +209,17 @@ void UpdateData(unsigned int uiIndex, float value, StorageTypes* threadData)
 	}
 
 	threadData[uiIndex].sum += value;
+
 }
 
 float CalcAvg(unsigned int uiIndex, StorageTypes* threadData)
 {
 	//declare variable
 	float Avg = 0;
-
-	//get sum
-	//for (unsigned int x = 0; x < threadData[uiIndex].size; x++)
-		//Avg += threadData[uiIndex].pData[x];
-
+	float test = 0;
+	
 	//calculate average
 	Avg = threadData[uiIndex].sum / threadData[uiIndex].size;
+
 	return Avg;
 }
